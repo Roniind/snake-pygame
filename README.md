@@ -46,7 +46,9 @@ python snake_game.py
 
 
 
-✅ Por hacer
+✅ Por hacer:
+
+
 Guardar puntajes
 
 Fondos animados
