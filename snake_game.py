@@ -1,14 +1,22 @@
 import pygame
 import random
 import sys
+import os
+
+def ruta_absoluta(relativa):
+    """Devuelve la ruta absoluta del archivo, compatible con PyInstaller"""
+    base_path = getattr(sys, '_MEIPASS', os.path.abspath("."))
+    return os.path.join(base_path, relativa)
+
 
 # Inicializar pygame
 pygame.init()
 pygame.mixer.init()
 
 # sonidos
-sonido_comer = pygame.mixer.Sound("sounds/eat.wav")
-sonido_perder = pygame.mixer.Sound("sounds/gameover.wav")
+sonido_comer = pygame.mixer.Sound(ruta_absoluta("sounds/eat.wav"))
+sonido_perder = pygame.mixer.Sound(ruta_absoluta("sounds/gameover.wav"))
+pygame.mixer.music.load(ruta_absoluta("sounds/menu.mp3"))
 
 # Tamaño de pantalla y bloques
 ANCHO, ALTO = 600, 400
@@ -49,9 +57,8 @@ def generar_comida(serpiente):
 
 #Menu Inicio     
 def menu_inicio():
-
     # Reproducir música del menú
-    pygame.mixer.music.load("sounds/menu.mp3")
+    pygame.mixer.music.load(ruta_absoluta("sounds/menu.mp3"))
     pygame.mixer.music.set_volume(0.5)
     pygame.mixer.music.play(-1)  # Repetir en bucle
     esperando = True
@@ -76,7 +83,6 @@ def menu_inicio():
                 if evento.key == pygame.K_SPACE:
                     pygame.mixer.music.stop() # Detiene música del menú al comenzar el juego
                     esperando = False
-
 #Juego   
 def juego():
     serpiente = [[100, 100], [80, 100], [60, 100]]
