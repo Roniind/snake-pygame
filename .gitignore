@@ -1,22 +1,15 @@
-# Carpetas generadas por Python
+# Python
 __pycache__/
 *.pyc
+*.pyo
 
-# Archivos de audio
+# Ejecutables y temporales
+*.exe
+*.spec
+dist/
+build/
+
+# Sonidos y binarios
 *.wav
 *.mp3
-
-# Ejecutables
-*.exe
-
-# Carpetas generadas por PyInstaller
-build/
-dist/
-*.spec
-
-# Archivos del sistema (Windows y Mac)
-.DS_Store
-Thumbs.db
-
-# Iconos
 *.ico
